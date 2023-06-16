@@ -33,6 +33,10 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   List<BookModel>? _books;
   GraphQLServices _graphQLServices = GraphQLServices();
+
+  final TextEditingController _titleController = TextEditingController();
+  final TextEditingController _authorController = TextEditingController();
+  final TextEditingController _yearController = TextEditingController();
   @override
   void initState() {
     _load();
@@ -79,5 +83,13 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
         ));
+  }
+
+  @override
+  void didChangeDependencies() {
+    _titleController.dispose();
+    _authorController.dispose();
+    _yearController.dispose();
+    super.didChangeDependencies();
   }
 }
